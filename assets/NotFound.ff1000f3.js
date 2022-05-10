@@ -1,0 +1,1 @@
+import{_ as n,f as s,o as c,c as r,b as e,g as a,h as _,j as o}from"./index.a690c5c5.js";const d={},l=e("h1",null,"Not Found",-1),i=o(" Ooops, we couldn't find this page. Try going "),u=o("home");function f(h,p){const t=s("router-link");return c(),r("div",null,[l,e("p",null,[i,a(t,{to:"/"},{default:_(()=>[u]),_:1})])])}var x=n(d,[["render",f]]);export{x as default};
