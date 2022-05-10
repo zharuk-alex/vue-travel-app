@@ -4,7 +4,7 @@
       <h1>{{ destination.name }}</h1>
       <GoBack />
       <div class="destination-details">
-        <img :src="`/images/${destination.image}`" :alt="destination.name" />
+        <BaseImage :src="destination.image" :alt="destination.name" />
         <p>{{ destination.description }}</p>
       </div>
     </section>
@@ -27,7 +27,7 @@
   </div>
 </template>
 
-<script>
+<script >
 import sourceData from "@/data.json";
 import ExperienceCard from "@/components/ExperienceCard.vue";
 import GoBack from "@/components/GoBack.vue";
@@ -52,6 +52,9 @@ export default {
     experiances() {
       return this.destination.experiances;
     },
+  },
+  mounted() {
+    console.log(import.meta.env.BASE_URL);
   },
   methods: {},
 };

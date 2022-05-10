@@ -3,6 +3,7 @@ import Home from "@/views/Home.vue";
 
 import sourceData from '@/data.json'
 
+const webHistoryPath = import.meta.env.BASE_URL
 
 const routes = [
   { 
@@ -86,7 +87,7 @@ const routes = [
 
 
 const router = createRouter({
-  history: createWebHistory(),
+  history: createWebHistory(webHistoryPath),
   routes,
   // linkActiveClass: "nav-active-link",
   scrollBehavior(to, from, savedPosition){
