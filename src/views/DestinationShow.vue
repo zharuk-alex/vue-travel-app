@@ -8,13 +8,14 @@
         <p>{{ destination.description }}</p>
       </div>
     </section>
-    <section class="experiences">
+    <section id="top-experiences" class="experiences">
       <h2>Top Experiences in {{ destination.name }}</h2>
       <div class="cards">
         <router-link
           v-for="experience in destination.experiences"
           :key="experience.slug"
           :to="{
+            hash: '#top-experiences',
             name: 'experience.show',
             params: { experienceSlug: experience.slug },
           }"
@@ -52,9 +53,6 @@ export default {
     experiances() {
       return this.destination.experiances;
     },
-  },
-  mounted() {
-    console.log(import.meta.env.BASE_URL);
   },
   methods: {},
 };

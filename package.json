@@ -1,12 +1,13 @@
 {
   "name": "vue-travel-app",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "gh-pages-deploy": "sh deploy_ghpages.sh"
+    "deploy-github-pages": "sh deploy-github-pages.sh",
+    "deploy-github": "sh deploy-github.sh"
   },
   "dependencies": {
     "vue": "^3.2.25",

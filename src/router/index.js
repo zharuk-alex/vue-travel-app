@@ -5,6 +5,12 @@ import sourceData from '@/data.json'
 
 const webHistoryPath = import.meta.env.BASE_URL
 
+const getDestination = async ({id, slug})=>{
+    const result = await fetch(`https://travel-dummy-api.netlify.app/${slug}`);
+    const destination = await result.json()
+  return destination.id == parseInt(id)
+}
+
 const routes = [
   { 
     path: "/", 
@@ -55,10 +61,9 @@ const routes = [
     component: ()=>import('@/views/DestinationShow.vue'), 
     props: (route) => ({...route.params, id: parseInt(route.params.id)}),
     async beforeEnter(to){
+      let {id, slug} = to.params;
       const exist = sourceData.destinations.find(destination => destination.id == parseInt(to.params.id))
-      // const result = await fetch(`https://travel-dummy-api.netlify.app/${to.params.slug}`);
-      // const destination = await result.json()
-      // const exist = destination.id == parseInt(to.params.id)
+      // const exist = getDestination({id, slug})
 
       if(!exist){
         return {
@@ -91,9 +96,24 @@ const router = createRouter({
   routes,
   // linkActiveClass: "nav-active-link",
   scrollBehavior(to, from, savedPosition){
-    return new Promise((resolve)=>{
-      setTimeout(()=>resolve({top: 0, behavior: 'smooth'}), 300)
-    }) 
+    
+    if (savedPosition) {
+      return savedPosition
+    }
+  
+    if (to.hash) {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve({ el: to.hash, behavior: 'smooth' })
+        }, 300)
+      })
+    }
+  
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve({top: 0, behavior: 'smooth'})
+      }, 300)
+    })
   }
 })
 

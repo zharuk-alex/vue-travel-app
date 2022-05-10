@@ -1,4 +1,6 @@
-deploy_ghpages.sh
+deploy-github.sh
+deploy-github-pages.sh
+
 # Logs
 logs
 *.log
